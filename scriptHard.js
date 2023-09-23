@@ -13,6 +13,16 @@ function getPilihanComputer() {
   }
 }
 
+function getPilihanComputer2() {
+  if (pilihanPlayer == "gajah") {
+    return "semut";
+  } else if (pilihanPlayer == "semut") {
+    return "orang";
+  } else {
+    return "gajah";
+  }
+}
+
 function getHasil(comp, player) {
   if (player == comp) return "SERI!";
   if (player == "gajah") return comp == "orang" ? "MENANG!" : "KALAH!";
@@ -38,9 +48,20 @@ function putar() {
 const pilihan = document.querySelectorAll("li img");
 pilihan.forEach(function (pil) {
   pil.addEventListener("click", function () {
-    const pilihanComputer = getPilihanComputer();
-    const pilihanPlayer = pil.classList[0];
-    const hasil = getHasil(pilihanComputer, pilihanPlayer);
+    if (scorePlayer <= 8) {
+      pilihanComputer = getPilihanComputer();
+      pilihanPlayer = pil.classList[0];
+      hasil = getHasil(pilihanComputer, pilihanPlayer);
+    } else if (scoreCom >= 14 && scoreCom <= 20) {
+      pilihanComputer = getPilihanComputer();
+      pilihanPlayer = pil.classList[0];
+      hasil = getHasil(pilihanComputer, pilihanPlayer);
+    } else {
+      pilihanPlayer = pil.classList[0];
+      pilihanComputer = getPilihanComputer2();
+      hasil = getHasil(pilihanComputer, pilihanPlayer);
+    }
+
     if (hasil == "MENANG!") {
       scorePlayer = scorePlayer + 1;
     }

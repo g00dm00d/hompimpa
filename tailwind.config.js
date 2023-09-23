@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html"],
+  content: ["./index.html", "./indexHard.html"],
   theme: {
     fontFamily: {
       sans: ["ui-sans-serif", "system-ui"],
