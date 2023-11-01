@@ -103,26 +103,38 @@
             <div
               class="area-computer py-5 mx-auto items-center rounded-bl-3xl rounded-br-3xl bg-gradient-to-b from-red-900 to-orange-700"
             >
-              <ul class="flex justify-center gap-3">
-                <li class="w-16 md:w-32">
-                  <img
-                    src="img/gajah.png"
-                    class="gajah rounded-full hover:scale-110"
-                  />
-                </li>
-                <li class="w-16 md:w-32">
-                  <img
-                    src="img/orang.png"
-                    class="orang rounded-full hover:scale-110"
-                  />
-                </li>
-                <li class="w-16 md:w-32">
-                  <img
-                    src="img/semut.png"
-                    class="semut rounded-full hover:scale-110"
-                  />
-                </li>
-              </ul>
+              <div class="flex justify-center gap-3">
+                <div class="w-16 md:w-32">
+                  <button
+                    data-pilihan="semut"
+                    class="pilihan rounded-full hover:scale-110"
+                  >
+                    <img src="img/semut.png" class="semut" />
+                  </button>
+                </div>
+                <div class="w-16 md:w-32">
+                  <button
+                    data-pilihan="gajah"
+                    class="pilihan rounded-full hover:scale-110"
+                  >
+                    <img
+                      src="img/gajah.png"
+                      class="gajah rounded-full hover:scale-110"
+                    />
+                  </button>
+                </div>
+                <div class="w-16 md:w-32">
+                  <button
+                    data-pilihan="orang"
+                    class="pilihan rounded-full hover:scale-110"
+                  >
+                    <img
+                      src="img/orang.png"
+                      class="orang rounded-full hover:scale-110"
+                    />
+                  </button>
+                </div>
+              </div>
             </div>
             <!-- END PLAYER -->
           </div>
@@ -141,17 +153,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div
-      class="fixed z-10 bottom-5 left-5 w-24 md:w-32 bg-yellow-300 rounded-lg"
-    >
-      <a href="indexHard.html"
-        ><img
-          src="img/hardMode.png"
-          class="animate-pulse rounded-lg"
-          alt="Hard Mode"
-      /></a>
     </div>
 
     <script src="script.js"></script>

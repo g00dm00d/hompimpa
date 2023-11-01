@@ -1,9 +1,10 @@
-scorePlayer = 0;
-scoreCom = 0;
+let scorePlayer = 0;
+let scoreCom = 0;
+const gambarComputer = document.querySelector(".img-computer");
+const info = document.querySelector(".info");
 
 function getPilihanComputer() {
   var comp = Math.random();
-
   if (comp < 0.34) {
     return "gajah";
   } else if (comp >= 0.34 && comp < 0.67) {
@@ -21,12 +22,11 @@ function getHasil(comp, player) {
 }
 
 function putar() {
-  const gambarComputer = document.querySelector(".img-computer");
   const gambar = ["gajah", "orang", "semut"];
   let i = 0;
   const waktuMulai = new Date().getTime();
   setInterval(function () {
-    if (new Date().getTime() - waktuMulai > 1000) {
+    if (new Date().getTime() - waktuMulai > 1199) {
       clearInterval;
       return;
     }
@@ -35,61 +35,46 @@ function putar() {
   }, 100);
 }
 
-const pilihan = document.querySelectorAll("li img");
+function putarHasil() {
+  const titik = [".", "..", "..."];
+  let i = 0;
+  const waktuMulai = new Date().getTime();
+  setInterval(function () {
+    if (new Date().getTime() - waktuMulai > 1199) {
+      clearInterval;
+      return;
+    }
+    info.innerHTML = titik[i++];
+    if (i == titik.length) i = 0;
+  }, 170);
+}
+
+function updateScore() {
+  const bScoreCom = document.querySelector(".score-com");
+  const bScorePlayer = document.querySelector(".score-player");
+  bScoreCom.innerHTML = scoreCom;
+  bScorePlayer.innerHTML = scorePlayer;
+}
+
+const pilihan = document.querySelectorAll(".pilihan");
 pilihan.forEach(function (pil) {
   pil.addEventListener("click", function () {
+    pil.disabled = true;
+
     const pilihanComputer = getPilihanComputer();
-    const pilihanPlayer = pil.classList[0];
+    const pilihanPlayer = pil.dataset.pilihan;
     const hasil = getHasil(pilihanComputer, pilihanPlayer);
-    if (hasil == "MENANG!") {
-      scorePlayer = scorePlayer + 1;
-    }
-    if (hasil == "KALAH!") {
-      scoreCom = scoreCom + 1;
-    }
+
+    if (hasil == "MENANG!") scorePlayer++;
+    if (hasil == "KALAH!") scoreCom++;
+
     putar();
+    putarHasil();
     setTimeout(function () {
-      const gambarComputer = document.querySelector(".img-computer");
-      const bScoreCom = document.querySelector(".score-com");
-      const bScorePlayer = document.querySelector(".score-player");
-      bScoreCom.innerHTML = scoreCom;
-      bScorePlayer.innerHTML = scorePlayer;
       gambarComputer.setAttribute("src", "img/" + pilihanComputer + ".png");
-      const info = document.querySelector(".info");
       info.innerHTML = hasil;
-    }, 1000);
+      pil.disabled = false;
+      updateScore();
+    }, 1200);
   });
 });
-
-// const pGajah = document.querySelector(".gajah");
-// pGajah.addEventListener("click", function () {
-//   const pilihanComputer = getPilihanComputer();
-//   const pilihanPlayer = pGajah.classList[0];
-//   const hasil = getHasil(pilihanComputer, pilihanPlayer);
-//   const gambarComputer = document.querySelector(".img-computer");
-//   gambarComputer.setAttribute("src", "img/" + pilihanComputer + ".png");
-//   const info = document.querySelector(".info");
-//   info.innerHTML = hasil;
-// });
-
-// const pOrang = document.querySelector(".orang");
-// pOrang.addEventListener("click", function () {
-//   const pilihanComputer = getPilihanComputer();
-//   const pilihanPlayer = pOrang.classList[0];
-//   const hasil = getHasil(pilihanComputer, pilihanPlayer);
-//   const gambarComputer = document.querySelector(".img-computer");
-//   gambarComputer.setAttribute("src", "img/" + pilihanComputer + ".png");
-//   const info = document.querySelector(".info");
-//   info.innerHTML = hasil;
-// });
-
-// const pSemut = document.querySelector(".semut");
-// pSemut.addEventListener("click", function () {
-//   const pilihanComputer = getPilihanComputer();
-//   const pilihanPlayer = pSemut.classList[0];
-//   const hasil = getHasil(pilihanComputer, pilihanPlayer);
-//   const gambarComputer = document.querySelector(".img-computer");
-//   gambarComputer.setAttribute("src", "img/" + pilihanComputer + ".png");
-//   const info = document.querySelector(".info");
-//   info.innerHTML = hasil;
-// });
