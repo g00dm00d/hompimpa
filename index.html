@@ -40,6 +40,11 @@
       background-color: #172554;
     "
   >
+    <audio controls autoplay loop id="myAudio" volume="0.5" class="hidden">
+      <source src="ihavenoenemies.mp3" type="audio/mpeg" />
+      Maaf, browser Anda tidak mendukung pemutaran audio.
+    </audio>
+
     <div class="w-full h-full flex justify-center items-center flex-wrap">
       <div class="container w-[350px] md:w-[450px] mx-auto">
         <div class="w-full mb-2">
@@ -107,31 +112,28 @@
                 <div class="w-16 md:w-32">
                   <button
                     data-pilihan="semut"
+                    onclick="playAudio()"
                     class="pilihan rounded-full hover:scale-110"
                   >
-                    <img src="img/semut.png" class="semut" />
+                    <img src="img/semut.png" />
                   </button>
                 </div>
                 <div class="w-16 md:w-32">
                   <button
                     data-pilihan="gajah"
+                    onclick="playAudio()"
                     class="pilihan rounded-full hover:scale-110"
                   >
-                    <img
-                      src="img/gajah.png"
-                      class="gajah rounded-full hover:scale-110"
-                    />
+                    <img src="img/gajah.png" />
                   </button>
                 </div>
                 <div class="w-16 md:w-32">
                   <button
                     data-pilihan="orang"
+                    onclick="playAudio()"
                     class="pilihan rounded-full hover:scale-110"
                   >
-                    <img
-                      src="img/orang.png"
-                      class="orang rounded-full hover:scale-110"
-                    />
+                    <img src="img/orang.png" />
                   </button>
                 </div>
               </div>

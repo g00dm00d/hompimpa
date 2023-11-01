@@ -2,6 +2,13 @@ let scorePlayer = 0;
 let scoreCom = 0;
 const gambarComputer = document.querySelector(".img-computer");
 const info = document.querySelector(".info");
+const audio = document.getElementById("myAudio");
+
+function playAudio() {
+  if (audio) {
+    audio.play();
+  }
+}
 
 function getPilihanComputer() {
   var comp = Math.random();
